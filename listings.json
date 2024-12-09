@@ -1,0 +1,10 @@
+[
+  {
+    "listing": "/features/listing/listing.html",
+    "items": [
+      "/features/listing/files/news1.html",
+      "/features/listing/files/news2.html",
+      "/features/listing/files/news3.html"
+    ]
+  }
+]

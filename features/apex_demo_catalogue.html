@@ -1,0 +1,3327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>APEx - Demo Documentation Portal - Demo - Ingesting data in the product catalogue</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../features/dashboards/dashboard.html" rel="next">
+<link href="../features/charts.html" rel="prev">
+<link href="../assets/img/logos/apex_icon_blue.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": true,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+</head><body class="nav-sidebar floating nav-fixed"><div class="container">
+    <div class="c-header__top">
+        <div class="c-header__navigate">
+            <div class="c-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <a class="c-header__esa-text" href="#">
+                <img src="../assets/img/logos/text-esa.svg" alt="The European Space Agency">
+            </a>
+        </div>
+
+        <div>
+            <div class="c-header__esa">
+                <div class="region region-nav-branding">
+                    <div id="block-vitotheme-branding" class="block block-system block-system-branding-block">
+                        <div class="navbar-brand d-flex align-items-center">
+
+                            <a href="../" title="Home" rel="home" class="site-logo d-block">
+                                <img src="../assets/img/logos/logo-esa.svg" alt="Home" fetchpriority="high">
+                            </a>
+
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+
+
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">APEx - Demo Documentation Portal</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../features/charts.html">Features</a></li><li class="breadcrumb-item"><a href="../features/apex_demo_catalogue.html">Notebooks</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Features</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../features/charts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Charts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../features/apex_demo_catalogue.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Notebooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../features/dashboards/dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dashboard</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../features/listing/listing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Listings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../features/custom/doclisting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Custom code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../features/charts.html">Features</a></li><li class="breadcrumb-item"><a href="../features/apex_demo_catalogue.html">Notebooks</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Demo - Ingesting data in the product catalogue</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this demo, we will demonstrate how to ingest project-generated data into the APEx product catalogue. The process will include:</p>
+<p><strong>1. Generating Data with openEO</strong><br>We will generate Sentinel-2 (S2) imagery over Gran Canaria using openEO. This data will be used to simulate project-generated data that can be ingested into the APEx catalogue.</p>
+<p><strong>2. Ingesting the Data into the APEx STAC Catalogue</strong><br>After generating the data, we will show how to ingest it into the APEx STAC catalogue. This will allow the data to be stored in a standardized format for discovery and access.</p>
+<p><strong>3. Visualizing the Result in the STAC Browser</strong><br>Once the data is ingested, we will use the STAC browser to visualize the product and verify its availability in the catalogue.</p>
+<div id="93e789eb-b6a6-4e7c-ab7e-2976207ad4e0" class="cell" data-scrolled="true" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install openeo owslib requests_oauthlib</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm <span class="op">/</span>workspace<span class="op">/</span>.local<span class="op">/</span>share<span class="op">/</span>openeo<span class="op">-</span>python<span class="op">-</span>client<span class="op">/</span>refresh<span class="op">-</span>tokens.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: openeo in /opt/conda/lib/python3.11/site-packages (0.35.0)
+Requirement already satisfied: owslib in /opt/conda/lib/python3.11/site-packages (0.32.0)
+Requirement already satisfied: requests_oauthlib in /opt/conda/lib/python3.11/site-packages (2.0.0)
+Requirement already satisfied: requests&gt;=2.26.0 in /opt/conda/lib/python3.11/site-packages (from openeo) (2.32.3)
+Requirement already satisfied: shapely&gt;=1.6.4 in /opt/conda/lib/python3.11/site-packages (from openeo) (2.0.6)
+Requirement already satisfied: numpy&gt;=1.17.0 in /opt/conda/lib/python3.11/site-packages (from openeo) (2.2.0)
+Requirement already satisfied: xarray&gt;=0.12.3 in /opt/conda/lib/python3.11/site-packages (from openeo) (2024.11.0)
+Requirement already satisfied: pandas&gt;0.20.0 in /opt/conda/lib/python3.11/site-packages (from openeo) (2.2.3)
+Requirement already satisfied: pystac&gt;=1.5.0 in /opt/conda/lib/python3.11/site-packages (from openeo) (1.11.0)
+Requirement already satisfied: deprecated&gt;=1.2.12 in /opt/conda/lib/python3.11/site-packages (from openeo) (1.2.15)
+Requirement already satisfied: lxml in /opt/conda/lib/python3.11/site-packages (from owslib) (5.3.0)
+Requirement already satisfied: python-dateutil in /opt/conda/lib/python3.11/site-packages (from owslib) (2.9.0)
+Requirement already satisfied: pyyaml in /opt/conda/lib/python3.11/site-packages (from owslib) (6.0.2)
+Requirement already satisfied: oauthlib&gt;=3.0.0 in /opt/conda/lib/python3.11/site-packages (from requests_oauthlib) (3.2.2)
+Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in /opt/conda/lib/python3.11/site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.17.0)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/conda/lib/python3.11/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2024.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /opt/conda/lib/python3.11/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2024.2)
+Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.11/site-packages (from python-dateutil-&gt;owslib) (1.16.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/conda/lib/python3.11/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/conda/lib/python3.11/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/conda/lib/python3.11/site-packages (from requests&gt;=2.26.0-&gt;openeo) (2.2.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/conda/lib/python3.11/site-packages (from requests&gt;=2.26.0-&gt;openeo) (2024.8.30)
+Requirement already satisfied: packaging&gt;=23.2 in /opt/conda/lib/python3.11/site-packages (from xarray&gt;=0.12.3-&gt;openeo) (24.1)</code></pre>
+</div>
+</div>
+<section id="generating-data-with-openeo" class="level2">
+<h2 class="anchored" data-anchor-id="generating-data-with-openeo">1. Generating Data with openEO</h2>
+<p>In this section, we will use openEO to generate some Earth observation data, which we will later ingest into the catalogue. Specifically, we will generate a Sentinel-2 image over the Gran Canaria region. The result of this step is a <code>gran_canaria.tiff</code> that is downloaded locally.</p>
+<div id="36f17a52-fa8a-4706-ae45-2c8d5459c5e1" class="cell" data-scrolled="true" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openeo</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bounds <span class="op">=</span> (<span class="op">-</span><span class="fl">28.30438068296276</span>, <span class="op">-</span><span class="fl">16.171874999999993</span>, <span class="op">-</span><span class="fl">27.68352808378777</span>, <span class="op">-</span><span class="fl">15.468750000000012</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>resolution <span class="op">=</span> <span class="fl">38.21851414258813</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>con <span class="op">=</span> openeo.<span class="ex">connect</span>(<span class="st">"openeo.dataspace.copernicus.eu"</span>).authenticate_oidc()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>cube <span class="op">=</span> con.load_collection(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SENTINEL2_L2A"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    bands<span class="op">=</span>[<span class="st">"B04"</span>],</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    temporal_extent<span class="op">=</span><span class="st">"2019-08-19"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    spatial_extent<span class="op">=</span>{</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"west"</span>: bounds[<span class="dv">1</span>],</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"south"</span>: <span class="bu">abs</span>(bounds[<span class="dv">2</span>]),<span class="co">#abs is weird, does GlobalMercator return wrong latitude values?</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"east"</span>: bounds[<span class="dv">3</span>],</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"north"</span>: <span class="bu">abs</span>(bounds[<span class="dv">0</span>]),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>cube.result_node().update_arguments(featureflags<span class="op">=</span>{<span class="st">"tilesize"</span>: <span class="dv">256</span>})<span class="co">#force block size in output tiff</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> cube.resample_spatial(resolution<span class="op">=</span>resolution,projection<span class="op">=</span><span class="st">"EPSG:3857"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>job <span class="op">=</span> result.execute_batch(<span class="st">"gran_canaria.tiff"</span>,title<span class="op">=</span><span class="st">"APEx - Demo - Gran Canaria"</span>,filename_prefix<span class="op">=</span><span class="st">"gran_canaria"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=ZZKB-QBFP" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=ZZKB-QBFP" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=ZZKB-QBFP</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=ZZKB-QBFP');return false;" title="Copy authentication URL to clipboard">📋</a> to authenticate.
+</div>
+<div class="cell-output cell-output-display">
+✅ Authorized successfully
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Authenticated using device code flow.
+0:00:00 Job 'j-241209296c304e40aab094e29220d448': send 'start'
+0:00:15 Job 'j-241209296c304e40aab094e29220d448': queued (progress 0%)
+0:00:20 Job 'j-241209296c304e40aab094e29220d448': queued (progress 0%)
+0:00:27 Job 'j-241209296c304e40aab094e29220d448': queued (progress 0%)
+0:00:35 Job 'j-241209296c304e40aab094e29220d448': queued (progress 0%)
+0:00:45 Job 'j-241209296c304e40aab094e29220d448': queued (progress 0%)
+0:00:57 Job 'j-241209296c304e40aab094e29220d448': queued (progress 0%)
+0:01:13 Job 'j-241209296c304e40aab094e29220d448': running (progress N/A)
+0:01:32 Job 'j-241209296c304e40aab094e29220d448': running (progress N/A)
+0:01:56 Job 'j-241209296c304e40aab094e29220d448': running (progress N/A)
+0:02:26 Job 'j-241209296c304e40aab094e29220d448': running (progress N/A)
+0:03:03 Job 'j-241209296c304e40aab094e29220d448': running (progress N/A)
+0:03:50 Job 'j-241209296c304e40aab094e29220d448': running (progress N/A)
+0:04:49 Job 'j-241209296c304e40aab094e29220d448': finished (progress 100%)</code></pre>
+</div>
+</div>
+<div id="dc375553-299d-48ab-8bc0-239f372957a3" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+
+    <script>
+    if (!window.customElements || !window.customElements.get('openeo-job')) {
+        var el = document.createElement('script');
+        el.src = "https://cdn.jsdelivr.net/npm/@openeo/vue-components@2/assets/openeo.min.js";
+        document.head.appendChild(el);
+
+        var font = document.createElement('font');
+        font.as = "font";
+        font.type = "font/woff2";
+        font.crossOrigin = true;
+        font.href = "https://use.fontawesome.com/releases/v5.13.0/webfonts/fa-solid-900.woff2"
+        document.head.appendChild(font);
+    }
+    </script>
+    <openeo-job>
+        <script type="application/json">{"currency": "credits", "job": {"costs": 4, "created": "2024-12-09T09:35:59Z", "id": "j-241209296c304e40aab094e29220d448", "process": {"process_graph": {"loadcollection1": {"arguments": {"bands": ["B04"], "featureflags": {"tilesize": 256}, "id": "SENTINEL2_L2A", "spatial_extent": {"east": -15.468750000000012, "north": 28.30438068296276, "south": 27.68352808378777, "west": -16.171874999999993}, "temporal_extent": ["2019-08-19", "2019-08-20"]}, "process_id": "load_collection"}, "resamplespatial1": {"arguments": {"align": "upper-left", "data": {"from_node": "loadcollection1"}, "method": "near", "projection": "EPSG:3857", "resolution": 38.21851414258813}, "process_id": "resample_spatial"}, "saveresult1": {"arguments": {"data": {"from_node": "resamplespatial1"}, "format": "GTiff", "options": {"filename_prefix": "gran_canaria"}}, "process_id": "save_result", "result": true}}}, "progress": 100, "status": "finished", "title": "APEx - Demo - Gran Canaria", "updated": "2024-12-09T09:40:31Z", "usage": {"cpu": {"unit": "cpu-seconds", "value": 163.870851083}, "duration": {"unit": "seconds", "value": 205}, "input_pixel": {"unit": "mega-pixel", "value": 5.328404426574707}, "max_executor_memory": {"unit": "gb", "value": 1.4906387329101562}, "memory": {"unit": "mb-seconds", "value": 850714.1650390625}, "network_received": {"unit": "b", "value": 2594990995}}}}</script>
+    </openeo-job>
+    
+</div>
+</div>
+</section>
+<section id="ingesting-the-data-into-the-apex-stac-catalogue" class="level1">
+<h1>2. Ingesting the Data into the APEx STAC Catalogue</h1>
+<p>In this section we explore how to use the generated openEO result to generate STAC metadata. This STAC metadata is then used to ingest the result into the project’s STAC catalogue.</p>
+<div id="afe3b3a6-2677-42fc-a387-bd583fa0a9ef" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5e69950a-b240-43d6-8f7f-a6a7ce611cb9" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>CATALOGUE_URL <span class="op">=</span> <span class="st">"https://catalogue.demo.apex.esa.int"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>STAC_METADATA_ID <span class="op">=</span> <span class="st">"gran_canaria_demo"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="generating-the-stac-metadata" class="level2">
+<h2 class="anchored" data-anchor-id="generating-the-stac-metadata">2.1. Generating the STAC metadata</h2>
+<p>In this section, we demonstrate how to use the generated openEO results to create STAC metadata. This metadata is then utilized to ingest the results into the project’s STAC catalogue.</p>
+<div id="2823ccce-3676-4c8c-ba62-d71222c4aa11" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pystac</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="1018702d-15a9-47e4-b62f-3def0662a318" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>stac_metadata_dict <span class="op">=</span> job.get_results().get_metadata()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>stac_metadata_dict[<span class="st">"id"</span>] <span class="op">=</span> STAC_METADATA_ID</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#remove collection assets, we will rely on item links</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> stac_metadata_dict[<span class="st">"assets"</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>collection <span class="op">=</span> pystac.Collection.from_dict(stac_metadata_dict)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>collection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+
+<style>
+.pystac-summary {
+    cursor: pointer;
+    display: list-item;
+    list-style: revert;
+    margin-bottom: 0 !important;
+
+    .pystac-l {
+        padding-left: 0.5em;
+        color: rgb(64, 128, 128);
+        font-style: italic;
+    }
+}
+.pystac-row {
+    overflow-wrap: break-word;
+    padding-left: .825em;
+
+    .pystac-k {
+        display: inline-block;
+        margin: 0px 0.5em 0px 0px;
+    }
+    .pystac-v {
+        color: rgb(186, 33, 33);
+    }
+}
+.pystac-k {
+    color: rgb(0, 128, 0);
+    font-weight: 700;
+}
+</style>
+<div class="jp-RenderedJSON jp-mod-trusted jp-OutputArea-output">
+    <div class="container" style="line-height: normal;">
+        <ul style="padding: 0px; margin: 0px; list-style: none; display: block;">
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"Collection"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">id</span>
+            <span class="pystac-v">"gran_canaria_demo"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">stac_version</span>
+            <span class="pystac-v">"1.0.0"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">description</span>
+            <span class="pystac-v">"Results for batch job j-241209296c304e40aab094e29220d448"</span>
+        </li>
+    
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">links</span><span class="pystac-l">[] 9 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">0</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"root"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"https://openeo.dataspace.copernicus.eu/openeo/1.2/jobs/j-241209296c304e40aab094e29220d448/results"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"APEx - Demo - Gran Canaria"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"derived_from"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RDR_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"Derived from /eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RDR_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">2</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"derived_from"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RCS_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"Derived from /eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RCS_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">3</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"derived_from"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RCR_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"Derived from /eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RCR_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">4</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"derived_from"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RDS_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"Derived from /eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RDS_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">5</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"self"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"https://openeo.dataspace.copernicus.eu/openeo/1.2/jobs/j-241209296c304e40aab094e29220d448/results"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">6</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"canonical"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"https://openeo.dataspace.copernicus.eu/openeo/1.2/jobs/j-241209296c304e40aab094e29220d448/results/NjM5MTg1MWYtOTA0Mi00MTA4LThiMmEtM2RkMmU4YTlkZDBi/f8537e70f411e544cd6c725bab12ae1d?expires=1734342219"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">7</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"card4l-document"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"http://ceos.org/ard/files/PFS/SR/v5.0/CARD4L_Product_Family_Specification_Surface_Reflectance-v5.0.pdf"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/pdf"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">8</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"item"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"https://openeo.dataspace.copernicus.eu/openeo/1.2/jobs/j-241209296c304e40aab094e29220d448/results/items/NjM5MTg1MWYtOTA0Mi00MTA4LThiMmEtM2RkMmU4YTlkZDBi/88a175018953b2b50e22acd58f250eb6/gran_canaria_2019-08-19Z.tif?expires=1734342219"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/geo+json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">stac_extensions</span><span class="pystac-l">[] 4 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"https://stac-extensions.github.io/eo/v1.1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">1</span>
+            <span class="pystac-v">"https://stac-extensions.github.io/file/v2.1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">2</span>
+            <span class="pystac-v">"https://stac-extensions.github.io/processing/v1.1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">3</span>
+            <span class="pystac-v">"https://stac-extensions.github.io/projection/v1.1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">openeo:status</span>
+            <span class="pystac-v">"finished"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"APEx - Demo - Gran Canaria"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">extent</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">spatial</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">bbox</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">0</span><span class="pystac-l">[] 4 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">-16.171874999999993</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">1</span>
+            <span class="pystac-v">27.68352808378777</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">2</span>
+            <span class="pystac-v">-15.468750000000012</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">3</span>
+            <span class="pystac-v">28.30438068296276</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">temporal</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">interval</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">0</span><span class="pystac-l">[] 2 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"2019-08-19T00:00:00Z"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">1</span>
+            <span class="pystac-v">"2019-08-20T00:00:00Z"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">license</span>
+            <span class="pystac-v">"proprietary"</span>
+        </li>
+    
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">providers</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">0</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">name</span>
+            <span class="pystac-v">"VITO"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">description</span>
+            <span class="pystac-v">"This data was processed on an openEO backend maintained by VITO."</span>
+        </li>
+    
+            
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">roles</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"processor"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">processing:expression</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">expression</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">loadcollection1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">arguments</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">bands</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"B04"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">featureflags</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">tilesize</span>
+            <span class="pystac-v">256</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">id</span>
+            <span class="pystac-v">"SENTINEL2_L2A"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">spatial_extent</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">east</span>
+            <span class="pystac-v">-15.468750000000012</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">north</span>
+            <span class="pystac-v">28.30438068296276</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">south</span>
+            <span class="pystac-v">27.68352808378777</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">west</span>
+            <span class="pystac-v">-16.171874999999993</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">temporal_extent</span><span class="pystac-l">[] 2 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"2019-08-19"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">1</span>
+            <span class="pystac-v">"2019-08-20"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">process_id</span>
+            <span class="pystac-v">"load_collection"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">resamplespatial1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">arguments</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">align</span>
+            <span class="pystac-v">"upper-left"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">data</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">from_node</span>
+            <span class="pystac-v">"loadcollection1"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">method</span>
+            <span class="pystac-v">"near"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">projection</span>
+            <span class="pystac-v">"EPSG:3857"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">resolution</span>
+            <span class="pystac-v">38.21851414258813</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">process_id</span>
+            <span class="pystac-v">"resample_spatial"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">saveresult1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">arguments</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">data</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">from_node</span>
+            <span class="pystac-v">"resamplespatial1"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">format</span>
+            <span class="pystac-v">"GTiff"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">options</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">filename_prefix</span>
+            <span class="pystac-v">"gran_canaria"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">process_id</span>
+            <span class="pystac-v">"save_result"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">result</span>
+            <span class="pystac-v">True</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">format</span>
+            <span class="pystac-v">"openeo"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">processing:facility</span>
+            <span class="pystac-v">"openEO Geotrellis backend"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">processing:software</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">Geotrellis backend</span>
+            <span class="pystac-v">"0.50.1a1"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-online-openeo-collection-to-local-collection" class="level2">
+<h2 class="anchored" data-anchor-id="convert-online-openeo-collection-to-local-collection">2.2. Convert online openEO collection to local collection</h2>
+<p>This step cleans up links to avoid that they point to the openEO API, which in some cases requires authentication.</p>
+<p>There’s an <a href="https://github.com/Open-EO/openeo-python-client/issues/184">open issue</a> to integrate this in the API.</p>
+<div id="f010dc86-366f-4b9e-acf9-fe5b32f55995" class="cell" data-scrolled="true" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove collection and canonical links</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>collection.remove_links(rel<span class="op">=</span><span class="st">"collection"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>collection.remove_links(rel<span class="op">=</span><span class="st">"canonical"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> <span class="bu">list</span>(collection.get_stac_objects(rel<span class="op">=</span>pystac.RelType.ITEM))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> items:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    i.remove_links(rel<span class="op">=</span><span class="st">"collection"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    i.remove_links(rel<span class="op">=</span><span class="st">"canonical"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>collection.set_self_href(<span class="st">"/tmp/collection.json"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>collection.normalize_hrefs(<span class="st">'/tmp/'</span>, skip_unresolved<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>collection.license <span class="op">=</span> <span class="st">"CC-BY-4.0"</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> asset_transform(name,a):</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    a.href <span class="op">=</span> <span class="st">"/tmp/"</span> <span class="op">+</span> name</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#this step can transform asset hrefs as well, </span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#c2=catalog.map_assets(asset_transform)</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>collection.save(catalog_type<span class="op">=</span>pystac.CatalogType.SELF_CONTAINED)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>collection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+
+<style>
+.pystac-summary {
+    cursor: pointer;
+    display: list-item;
+    list-style: revert;
+    margin-bottom: 0 !important;
+
+    .pystac-l {
+        padding-left: 0.5em;
+        color: rgb(64, 128, 128);
+        font-style: italic;
+    }
+}
+.pystac-row {
+    overflow-wrap: break-word;
+    padding-left: .825em;
+
+    .pystac-k {
+        display: inline-block;
+        margin: 0px 0.5em 0px 0px;
+    }
+    .pystac-v {
+        color: rgb(186, 33, 33);
+    }
+}
+.pystac-k {
+    color: rgb(0, 128, 0);
+    font-weight: 700;
+}
+</style>
+<div class="jp-RenderedJSON jp-mod-trusted jp-OutputArea-output">
+    <div class="container" style="line-height: normal;">
+        <ul style="padding: 0px; margin: 0px; list-style: none; display: block;">
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"Collection"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">id</span>
+            <span class="pystac-v">"gran_canaria_demo"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">stac_version</span>
+            <span class="pystac-v">"1.0.0"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">description</span>
+            <span class="pystac-v">"Results for batch job j-241209296c304e40aab094e29220d448"</span>
+        </li>
+    
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">links</span><span class="pystac-l">[] 8 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">0</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"root"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/tmp/collection.json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"APEx - Demo - Gran Canaria"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"derived_from"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RDR_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"Derived from /eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RDR_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">2</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"derived_from"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RCS_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"Derived from /eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RCS_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">3</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"derived_from"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RCR_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"Derived from /eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RCR_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">4</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"derived_from"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RDS_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"Derived from /eodata/Sentinel-2/MSI/L2A_N0500/2019/08/19/S2A_MSIL2A_20190819T115221_N0500_R123_T28RDS_20230507T090239.SAFE"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">5</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"card4l-document"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"http://ceos.org/ard/files/PFS/SR/v5.0/CARD4L_Product_Family_Specification_Surface_Reflectance-v5.0.pdf"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/pdf"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">6</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"item"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/tmp/gran_canaria_2019-08-19Z.tif/gran_canaria_2019-08-19Z.tif.json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/geo+json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">7</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">rel</span>
+            <span class="pystac-v">"self"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">href</span>
+            <span class="pystac-v">"/tmp/collection.json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">type</span>
+            <span class="pystac-v">"application/json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">stac_extensions</span><span class="pystac-l">[] 4 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"https://stac-extensions.github.io/eo/v1.1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">1</span>
+            <span class="pystac-v">"https://stac-extensions.github.io/file/v2.1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">2</span>
+            <span class="pystac-v">"https://stac-extensions.github.io/processing/v1.1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">3</span>
+            <span class="pystac-v">"https://stac-extensions.github.io/projection/v1.1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">openeo:status</span>
+            <span class="pystac-v">"finished"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">title</span>
+            <span class="pystac-v">"APEx - Demo - Gran Canaria"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">extent</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">spatial</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">bbox</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">0</span><span class="pystac-l">[] 4 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">-16.171874999999993</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">1</span>
+            <span class="pystac-v">27.68352808378777</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">2</span>
+            <span class="pystac-v">-15.468750000000012</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">3</span>
+            <span class="pystac-v">28.30438068296276</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">temporal</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">interval</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">0</span><span class="pystac-l">[] 2 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"2019-08-19T00:00:00Z"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">1</span>
+            <span class="pystac-v">"2019-08-20T00:00:00Z"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+                
+            
+                
+                    
+        <li class="pystac-row">
+            <span class="pystac-k">license</span>
+            <span class="pystac-v">"CC-BY-4.0"</span>
+        </li>
+    
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">providers</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">0</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">name</span>
+            <span class="pystac-v">"VITO"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">description</span>
+            <span class="pystac-v">"This data was processed on an openEO backend maintained by VITO."</span>
+        </li>
+    
+            
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">roles</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"processor"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">processing:expression</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">expression</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">loadcollection1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">arguments</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">bands</span><span class="pystac-l">[] 1 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"B04"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">featureflags</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">tilesize</span>
+            <span class="pystac-v">256</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">id</span>
+            <span class="pystac-v">"SENTINEL2_L2A"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">spatial_extent</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">east</span>
+            <span class="pystac-v">-15.468750000000012</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">north</span>
+            <span class="pystac-v">28.30438068296276</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">south</span>
+            <span class="pystac-v">27.68352808378777</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">west</span>
+            <span class="pystac-v">-16.171874999999993</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                <li><details>
+        <summary class="pystac-summary"><span class="pystac-k">temporal_extent</span><span class="pystac-l">[] 2 items</span></summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">0</span>
+            <span class="pystac-v">"2019-08-19"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">1</span>
+            <span class="pystac-v">"2019-08-20"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">process_id</span>
+            <span class="pystac-v">"load_collection"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">resamplespatial1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">arguments</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">align</span>
+            <span class="pystac-v">"upper-left"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">data</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">from_node</span>
+            <span class="pystac-v">"loadcollection1"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">method</span>
+            <span class="pystac-v">"near"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">projection</span>
+            <span class="pystac-v">"EPSG:3857"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">resolution</span>
+            <span class="pystac-v">38.21851414258813</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">process_id</span>
+            <span class="pystac-v">"resample_spatial"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">saveresult1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">arguments</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">data</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">from_node</span>
+            <span class="pystac-v">"resamplespatial1"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">format</span>
+            <span class="pystac-v">"GTiff"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">options</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">filename_prefix</span>
+            <span class="pystac-v">"gran_canaria"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">process_id</span>
+            <span class="pystac-v">"save_result"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">result</span>
+            <span class="pystac-v">True</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">format</span>
+            <span class="pystac-v">"openeo"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">processing:facility</span>
+            <span class="pystac-v">"openEO Geotrellis backend"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-k">processing:software</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li class="pystac-row">
+            <span class="pystac-k">Geotrellis backend</span>
+            <span class="pystac-v">"0.50.1a1"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+</section>
+<section id="authenticate-with-stac-api" class="level2">
+<h2 class="anchored" data-anchor-id="authenticate-with-stac-api">2.3. Authenticate with STAC API</h2>
+<p>In this step, we will authenticate with the STAC catalogue for our project. The code leverages an external library, called <a href="https://requests-oauthlib.readthedocs.io/en/latest/index.html"><code>requests_oauthlib</code></a>, to handle the authentication process and retrieve the access token. Obtaining this token is a necessary prerequisite for performing the data ingestion step.</p>
+<blockquote class="blockquote">
+<p>After opening the URL in your webbrowser, you will need to copy paste the resulting URL in the input field provided by the next cell.</p>
+</blockquote>
+<div id="1baba973-88f2-40f6-b79c-2cfeb48e4523" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> requests_oauthlib <span class="im">import</span> OAuth2Session</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> webbrowser</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7b603d72-6f02-4787-8c58-5fb0699d41ea" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SERVER_URL <span class="op">=</span> <span class="st">"https://auth.apex.esa.int/"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>REALM <span class="op">=</span> <span class="st">"apex"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>CLIENT_ID <span class="op">=</span> <span class="st">"demo-catalogue-dev-api"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>REDIRECT_URI <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>CATALOGUE_URL<span class="sc">}</span><span class="ss">/callback"</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>BASE_URL <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>SERVER_URL<span class="sc">}</span><span class="ss">/realms/</span><span class="sc">{</span>REALM<span class="sc">}</span><span class="ss">/protocol/openid-connect"</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>AUTHORIZATION_URL <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>BASE_URL<span class="sc">}</span><span class="ss">/auth"</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>TOKEN_URL <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>BASE_URL<span class="sc">}</span><span class="ss">/token"</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize OAuth2 session</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>oauth <span class="op">=</span> OAuth2Session(</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    client_id<span class="op">=</span>CLIENT_ID,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    redirect_uri<span class="op">=</span>REDIRECT_URI</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Generate the authorization URL</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>authorization_url, state <span class="op">=</span> oauth.authorization_url(AUTHORIZATION_URL)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Visit this URL to authorize the application: </span><span class="sc">{</span>authorization_url<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Paste the redirect URL after login</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>redirect_response <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Paste the full redirect URL here: "</span>)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Exchange the authorization code for an access token</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    token <span class="op">=</span> oauth.fetch_token(</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        TOKEN_URL,</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        authorization_response<span class="op">=</span>redirect_response,</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    access_token <span class="op">=</span> token[<span class="st">"access_token"</span>]</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error fetching token: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>access_token</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Visit this URL to authorize the application: https://auth.apex.esa.int//realms/apex/protocol/openid-connect/auth?response_type=code&amp;client_id=demo-catalogue-dev-api&amp;redirect_uri=https%3A%2F%2Fcatalogue.demo.apex.esa.int%2Fcallback&amp;state=plQHbFFL4TpynvLEmM7RMpp7UJuB5o</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
+<pre><code>Paste the full redirect URL here:  https://catalogue.demo.apex.esa.int/callback?state=plQHbFFL4TpynvLEmM7RMpp7UJuB5o&amp;session_state=a13c63ff-049c-44d0-bd4d-46566729a8be&amp;iss=https%3A%2F%2Fauth.apex.esa.int%2Frealms%2Fapex&amp;code=db520cdb-18ea-4573-9e4b-fa14e0f56ebf.a13c63ff-049c-44d0-bd4d-46566729a8be.7f328923-c069-40b9-a30f-739450ad7703</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTaEs1c1JIR0lLYlJlRXF6azZlenZxamdiZWdvVFJnQnRqQUxMSmtZdmZBIn0.eyJleHAiOjE3MzM3MzgzNTQsImlhdCI6MTczMzczODA1NCwiYXV0aF90aW1lIjoxNzMzNzM4MDUxLCJqdGkiOiI2YjM2MzNiOC04MDQ5LTRlMDAtOTE2My1hODA2Y2EzMTY3ZWMiLCJpc3MiOiJodHRwczovL2F1dGguYXBleC5lc2EuaW50L3JlYWxtcy9hcGV4Iiwic3ViIjoiNTI5MDMzZTQtZmQxYS00MzBiLWIzODMtYTM1YTkwM2JjNDg3IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZGVtby1jYXRhbG9ndWUtZGV2LWFwaSIsInNpZCI6ImExM2M2M2ZmLTA0OWMtNDRkMC1iZDRkLTQ2NTY2NzI5YThiZSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9jYXRhbG9ndWUuZGVtby5hcGV4LmVzYS5pbnQiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbInN0YWMtYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJkZW1vLWNhdGFsb2d1ZS1kZXYtYXBpIjp7InJvbGVzIjpbInN0YWMtYWRtaW4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkJyYW0gSmFuc3NlbiIsInByZWZlcnJlZF91c2VybmFtZSI6ImJyYW0uamFuc3NlbkB2aXRvLmJlIiwiZ2l2ZW5fbmFtZSI6IkJyYW0iLCJmYW1pbHlfbmFtZSI6IkphbnNzZW4iLCJlbWFpbCI6ImJyYW0uamFuc3NlbkB2aXRvLmJlIn0.RvHI1zHGMCDRjQoX7v6Rf8xBE1yK-nv74QSsCjSzbTgb6tubkw9ojdy3NhaoHH9RsxSdJl83yGt60BpjzdV1UfVTXckIx1qM_C4CKimp90U3UILM8XIMc_W50uUaAUVc_somzp1Ux188lC_hoh6Kr4UcaN1015faFpEW1HYrEgV-rz_dCaeED1kUuUNfcutZcEDqNaZGbCRFu99JKwLEfu9R2gt22Pi3Y5PfjXKoKXw09B5nmYbQFoTaW1SLYYpWc6s9eqg7f_eUbdAcvuhGtqFwKNuBSEVQ53mWgje6bGW-xaWgj6fNYbjEP6PTiLJbrqXAcQsvVoTmcnoYDmo6NQ'</code></pre>
+</div>
+</div>
+</section>
+<section id="upload-to-stac-api" class="level2">
+<h2 class="anchored" data-anchor-id="upload-to-stac-api">2.4. Upload to STAC API</h2>
+<p>The collection metadata has been cleaned and is now ready to be added to the STAC API. In this step, we are creating the full collection, but it’s also possible to add the generated item to a new collection if preferred.</p>
+<p>Additionally, it’s recommended to enhance the metadata quality by adding extra metadata properties where applicable.</p>
+<blockquote class="blockquote">
+<p><strong>Important Note</strong><br> Currently, the Geotiff file is stored on the openEO backend and can be accessed through a signed URL. However, this URL will eventually expire. For more permanent cataloging, the data file should be moved to a more stable location. To do so, simply download the TIFF file and upload it to your preferred online storage location.</p>
+</blockquote>
+<div id="7b10d69f-5df2-44cd-80fe-263c3f217506" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> owslib.ogcapi.records <span class="im">import</span> Records</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> owslib.util <span class="im">import</span> Authentication</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BearerAuth(requests.auth.AuthBase):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, token):</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.token <span class="op">=</span> token</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, r):</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        r.headers[<span class="st">"authorization"</span>] <span class="op">=</span> <span class="st">"Bearer "</span> <span class="op">+</span> <span class="va">self</span>.token</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="0d94ec62-8388-492d-b27e-ff8d168ea557" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> BearerAuth(access_token)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> Records(CATALOGUE_URL,auth<span class="op">=</span>Authentication(auth_delegate<span class="op">=</span>auth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8eb7632b-0c0f-449e-bc07-db32de076543" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>coll_dict <span class="op">=</span> collection.to_dict()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>default_auth <span class="op">=</span> {</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"_auth"</span>: {</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"read"</span>: [<span class="st">"anonymous"</span>],</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"write"</span>: [<span class="st">"stac-openeo-admin"</span>, <span class="st">"stac-openeo-editor"</span>]</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>coll_dict.update(default_auth)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(<span class="ss">f"</span><span class="sc">{</span>CATALOGUE_URL<span class="sc">}</span><span class="ss">/collections"</span>, auth<span class="op">=</span>auth,json<span class="op">=</span>coll_dict)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>&lt;Response [201]&gt;</code></pre>
+</div>
+</div>
+<div id="cf4ac6fa-deb3-4cca-86e1-a7ab4e4e4030" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> collection.get_all_items():</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    item_dict <span class="op">=</span> item.to_dict()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(item)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    item_dict[<span class="st">"collection"</span>] <span class="op">=</span> collection.<span class="bu">id</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    r.collection_item_create(collection.<span class="bu">id</span>, item_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Item id=gran_canaria_2019-08-19Z.tif&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="visualizing-the-result-in-the-stac-browser" class="level1">
+<h1>3. Visualizing the Result in the STAC Browser</h1>
+<p>Now that the data has been ingested into the STAC catalogue, we can navigate to the <a href="https://browser.demo.apex.esa.int/?.language=en">Demo Browser</a> to see the result.</p>
+</section>
+<section id="cleanup-of-the-collection" class="level1">
+<h1>4. Cleanup of the collection</h1>
+<div id="947b5043-6cbc-4353-86e3-ad87afb6f227" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>requests.delete(<span class="ss">f"</span><span class="sc">{</span>CATALOGUE_URL<span class="sc">}</span><span class="ss">/collections/"</span> <span class="op">+</span> collection.<span class="bu">id</span>, auth<span class="op">=</span>auth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>&lt;Response [204]&gt;</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="../features/charts.html" class="pagination-link" aria-label="Charts">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Charts</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../features/dashboards/dashboard.html" class="pagination-link" aria-label="Dashboard">
+        <span class="nav-page-text">Dashboard</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
