@@ -1,0 +1,21 @@
+---
+title: "PDF Listing"
+execute:
+  echo: false
+jupyter: python3
+---
+
+```{python}
+import os
+from IPython.display import display, HTML
+
+# Specify the directory path where your PDFs are stored
+directory = "./docs"
+
+# List all PDF files in the directory
+pdf_files = [f for f in os.listdir(directory) if f.endswith('.pdf')]
+
+# Generate and output a markdown list with PDF icons
+output = "\n".join([f'<p><i class="fa fa-file-pdf-o" style="color: red;"></i> <a href="{os.path.join(directory, file)}" target="_blank">{file}</a></p>' for file in pdf_files])
+display(HTML(output))
+```

@@ -1,0 +1,27 @@
+# Charts
+
+
+## Mermaid Charts
+
+```{mermaid}
+flowchart TD
+    EO_PROJECT("EO Project")
+    ALGORITHM("Application Algorithm Definition")
+    ALGORITHM_GUIDELINES("Algorithm Provider Guidelines")
+    OPENEO_OGC("openEO API or OGC Processes API")
+    HOSTING_PLATFORM("Algorithm Hosting Platform")
+    OPERATOR("Platform Operator")
+    PLATFORM_GUIDELINES("Algorihm Hosting Platform Guidelines")
+    CATALOGUE("APEx Algorithm Catalogue")
+    APEX("APEx Consortium")
+
+    EO_PROJECT --> | owns | ALGORITHM
+    ALGORITHM --> | adheres to | ALGORITHM_GUIDELINES
+    ALGORITHM --> | hosted on | OPENEO_OGC
+    OPENEO_OGC --> | deployed on | HOSTING_PLATFORM
+    OPERATOR --> | operated by | HOSTING_PLATFORM
+    HOSTING_PLATFORM --> | adheres to | PLATFORM_GUIDELINES
+    ALGORITHM --> | registered in | CATALOGUE
+    APEX ---> | curates | CATALOGUE
+```
+

@@ -1,0 +1,50 @@
+project:
+  type: website
+  preview:
+    port: 4200
+
+
+website:
+  favicon: assets/img/logos/apex_icon_blue.svg
+  repo-url: "https://github.com/ESA-APEx/apex_demo_documentation"
+  repo-branch: "main"
+  search:
+    location: sidebar
+    type: textbox
+    copy-button: true
+
+  navbar:
+    pinned: true
+  page-navigation: true
+
+  title: "APEx - Demo Documentation Portal"
+
+  sidebar:
+    style: "floating"
+    collapse-level: 2
+    contents:
+      - href: index.qmd
+        text: Welcome
+      - text: Features
+        contents:
+          - href: features/charts.qmd
+            text: Charts
+          - href: features/apex_demo_catalogue.ipynb
+            text: Notebooks
+          - href: features/dashboards/dashboard.qmd
+            text: Dashboard
+          - href: features/listing/listing.qmd
+            text: Listings
+          - href: features/custom/doclisting.qmd
+            text: Custom code
+format:
+  html:
+    toc-depth: 4
+    page-layout: full
+    theme: [cosmo, css/custom.scss]
+    scss: true
+    highlight-style: solarized
+    include-in-header:
+      - html/esa-header.html
+    link-external-newwindow: false
+bread-crumbs: true

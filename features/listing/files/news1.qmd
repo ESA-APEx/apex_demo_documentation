@@ -1,0 +1,3 @@
+# News Item 1
+
+This is a news item for the demo project.

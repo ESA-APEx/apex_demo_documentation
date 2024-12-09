@@ -1,0 +1,4 @@
+# Welcome to the Demo Documentation
+
+Welcome to the Demo documentation! Here you’ll find everything you need to get started, explore the platform’s capabilities, and integrate Demo’s powerful satellite data tools into your projects. Whether you're a researcher, developer, or business professional, this documentation will guide you through our features, APIs, and best practices.
+

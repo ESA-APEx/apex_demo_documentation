@@ -1,0 +1,6 @@
+---
+title: "Listing"
+listing:
+  contents: ./files
+  type: grid
+---
